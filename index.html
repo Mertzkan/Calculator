@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculater</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+
+
+    <script>
+        function appendOperation(operation) {
+            document.getElementById('resultarea').innerHTML += operation;
+        }
+
+        function calculateResult() {
+            let res = document.getElementById('resultarea');
+            let result = eval(res.innerHTML);
+            res.innerHTML = result;
+        }
+
+        function deleteAll() {
+            let res = document.getElementById('resultarea');
+            res.innerHTML = res.innerHTML.slice(0, -1);
+        }
+
+        function cAll() {
+            let res = document.getElementById('resultarea');
+            res.innerHTML = '';
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div id="resultarea">
+
+    </div>
+    <table>
+        <tr>
+            <td class="highlight" onclick="appendOperation('*')">*</td>
+            <td class="highlight" onclick="appendOperation('/')">/</td>
+            <td class="highlight" onclick="cAll()">C</td>
+            <td class="highlight" onclick="deleteAll()">DEL</td>
+        </tr>
+        <tr>
+            <td onclick="appendOperation(7)">7</td>
+            <td onclick="appendOperation(8)">8</td>
+            <td onclick="appendOperation(9)">9</td>
+            <td class="highlight" onclick="appendOperation('-')">-</td>
+        </tr>
+
+        <tr>
+            <td onclick="appendOperation(4)">4</td>
+            <td onclick="appendOperation(5)">5</td>
+            <td onclick="appendOperation(6)">6</td>
+            <td class="highlight" onclick="appendOperation('+')">+</td>
+
+        </tr>
+
+        <tr>
+            <td onclick="appendOperation(1)">1</td>
+            <td onclick="appendOperation(2)">2</td>
+            <td onclick="appendOperation(3)">3</td>
+            <td class="highlight" onclick="appendOperation('000')">000</td>
+
+        </tr>
+
+        <tr>
+            <td class="highlight">+/-</td>
+            <td onclick="appendOperation(0)">0</td>
+            <td class="highlight" onclick="appendOperation('.')">,</td>
+            <td id="result" onclick="calculateResult()">=</td>
+        </tr>
+
+    </table>
+</body>
+
+</html>
